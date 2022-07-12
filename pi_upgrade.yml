@@ -1,0 +1,8 @@
+---
+- hosts: pis
+  gather_facts: yes
+  become: yes
+
+  tasks:
+    - name: Update Firmware
+      command: rpi-update

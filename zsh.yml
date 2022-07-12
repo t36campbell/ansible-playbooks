@@ -1,0 +1,19 @@
+---
+- hosts: all
+  gather_facts: yes
+  become: yes
+
+  tasks:
+    - name: Install zsh
+      apt:
+        name: zsh
+        state: latest
+        update_cache: true
+      when: "'linux' in group_names"
+
+    - name: copy config
+      copy:
+        src: .zshrc
+        dest: .zshrc
+        owner: root
+        mode: 777

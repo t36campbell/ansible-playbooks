@@ -1,0 +1,55 @@
+[servers]
+192.168.1.65    ansible_user=tyler
+192.168.1.125   ansible_user=tyler
+192.168.1.130   ansible_user=tyler
+
+[servers:vars]
+ansible_connection=ssh
+ansible_user=tyler
+ansible_ssh_pass=#chipfrankiejenna52618TSC
+ansible_become_pass=#chipfrankiejenna52618TSC
+
+
+[macs]
+192.168.1.140
+
+[pipad]
+192.168.1.234
+
+[pipad:vars]
+ansible_connection=ssh
+ansible_user=pi
+ansible_ssh_pass=aBc09876
+ansible_become_pass=aBc09876
+
+[mom]
+192.168.9.99
+
+[mom:vars]
+ansible_connection=ssh
+ansible_user=pi
+ansible_ssh_pass=aBc09876
+ansible_become_pass=aBc09876
+
+[pis]
+192.168.1.78
+192.168.1.96
+192.168.1.102
+192.168.1.127
+192.168.1.170
+
+[pis:vars]
+ansible_connection=ssh
+ansible_user=pi
+ansible_ssh_pass=aBc09876
+ansible_become_pass=aBc09876
+
+[linux:children]
+servers
+pipad
+pis
+# mom
+
+[all:children]
+linux
+macs
